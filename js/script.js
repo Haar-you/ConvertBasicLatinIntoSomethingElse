@@ -96,15 +96,11 @@ Tree.prototype.replace = function(input){
     return output;
 };
 
-
 var tree = new Tree();
-var reference = new Array();
 
-
-
-function ConstructTree(path){
+function constructTree(path){
     tree.init();
-    $.ajaxSetup({async: false});
+
     $.getJSON(`./json/${path}`, function(dat){
 	$.each(dat["data"], function(index, val){
 	    tree.put(
@@ -112,37 +108,32 @@ function ConstructTree(path){
 		val["out"].split('').map(x => x.charCodeAt(0))
 	    );
 	});
+	
+	$("#tree").html(tree.show());
     });
-    $.ajaxSetup({async: true});
-
-    $("#tree").html(tree.show());
 }
 
 
 
 $(document).ready(function(){
-    $.ajaxSetup({async: false});
+    
     $.getJSON("./js/reference.json", function(dat){
 	$.each(dat["reference"], function(index, val){
-	    reference.push(val);
+	    $("#reference").append(
+		$(`<a></a>`, {
+		    href: "#",
+		    on: {
+			click: function(){
+			    constructTree(val["file"]);
+			    $("#btnReference").click();
+			}
+		    },
+		    text: val["name"]
+		}).append("<br>")
+	    );
 	});
     });
-    $.ajaxSetup({async: true});
 
-    $.each(reference, function(index, val){
-	$("#reference").append(
-	    $(`<a></a>`, {
-		href: "#",
-		on: {
-		    click: function(){
-			ConstructTree(val["file"]);
-			$("#btnReference").click();
-		    }
-		},
-		text: val["name"]
-	    }).append("<br>")
-	);	
-    });
 
     $("#btnReference").click(function(){
 	if($("#reference").css("display") == "none"){
