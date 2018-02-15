@@ -1,0 +1,68 @@
+#input, #output{
+    width: 30%;
+    height: 300px;
+    resize: none;
+}
+
+#output{
+}
+
+#tree{
+    background-color: #eeffee;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    width: 20%;
+    height: 95%;
+    overflow: auto;
+    border: 1px solid black;
+    white-space: nowrap;
+}
+
+.treeInput{
+    font-family: monospace;
+}
+
+.treeOutput{
+    font-size: large;
+}
+
+#reference{
+    background-color: #eeffee;
+    position: absolute;
+    display: none;
+
+    top: 50px;
+    width: 20%;
+    height: 50%;
+    overflow: auto;
+    border: 1px solid black;
+    white-space: nowrap;
+
+    box-shadow: 0px 0px 10px;
+    
+}
+
+#header{
+    margin: 0;
+    height: 50px;
+    width: 100%;
+}
+
+#btnReference{
+    background-color: white;
+    width: 40px;
+    height: 40px;
+    border: 0;
+}
+
+    
+
+html{
+    height: 100%;
+}
+
+body{
+    margin: 0;
+    
+}

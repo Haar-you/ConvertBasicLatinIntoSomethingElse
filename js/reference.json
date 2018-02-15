@@ -1,0 +1,11 @@
+{
+    "reference" : [
+	{"file" : "burmese.json", "name" : "Burmese(ビルマ語)"},
+	{"file" : "hindi.json", "name" : "Hindi(ヒンディー語)"},
+	{"file" : "kartuli.json", "name" : "Georgian(グルジア語)"},
+	{"file" : "linearB.json", "name" : "LinearB(線文字B)"},
+	{"file" : "sindhi.json", "name" : "Sindhi(シンディー語)"},
+	{"file" : "xsampa-ipa.json", "name" : "XSAMPA->IPA"}
+	
+    ]
+}
