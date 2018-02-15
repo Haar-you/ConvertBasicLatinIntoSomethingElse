@@ -5,7 +5,15 @@
 	{"file" : "kartuli.json", "name" : "Georgian(グルジア語)"},
 	{"file" : "linearB.json", "name" : "LinearB(線文字B)"},
 	{"file" : "sindhi.json", "name" : "Sindhi(シンディー語)"},
-	{"file" : "xsampa-ipa.json", "name" : "XSAMPA->IPA"}
-	
+	{"file" : "xsampa-ipa.json", "name" : "XSAMPA->IPA"},
+	{"file" : "indic_transliteration.json", "name" : "IndicTransliteration(ISO 15919)"},
+	{"file" : "arabic.json", "name" : "Arabic(アラビア語)"},
+	{"file" : "kurd.json", "name" : "Sorani(ソラニー語)"},
+	{"file" : "inuktitut.json", "name" : "Inuktitut(イヌクティトゥット語)"},
+	{"file" : "modernHebrew.json", "name" : "ModernHebrew(現代ヘブライ語)"},
+	{"file" : "russian.json", "name" : "Russian(ロシア語)"},
+	{"file" : "tamil.json", "name" : "Tamil(タミル語)"},
+	{"file" : "tuva.json", "name" : "Tuva(トゥヴァ語)"},
+	{"file" : "uyghur.json", "name" : "Uyghur(ウイグル語)"}
     ]
 }
