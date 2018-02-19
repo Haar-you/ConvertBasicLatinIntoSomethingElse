@@ -113,6 +113,20 @@ function constructTree(path){
     });
 }
 
+var params = {};
+
+$(function(){
+    var search = window.location.search;
+    var p = search.split("&");
+    $.each(p, function(i,v){
+	var m = v.match(/^\??([\w-% ]+)=([\w-% ]*)$/);
+	if(m){
+	    params[m[1]] = decodeURI(m[2]);
+	}
+    });
+    console.log(params);
+});
+
 
 
 $(document).ready(function(){
@@ -149,6 +163,22 @@ $(document).ready(function(){
 	    $("#convert").click();
 	}
     });
+
+
+    ////
+    $("#output").css("font-family", params["font-family"]);
+    $("#output").css("font-size", params["font-size"]);
+    $("#output").css("font-weight", params["font-weight"]);
+    $("#output").css("font-style", params["font-style"]);
+
+    
+
+
+
+
+
+
+    
 });
 
 
@@ -165,3 +195,17 @@ function escape(str){
 	}[m];
     });
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
