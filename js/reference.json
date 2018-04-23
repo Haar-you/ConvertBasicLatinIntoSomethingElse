@@ -10,11 +10,12 @@
 	{"file" : "arabic.json", "name" : "Arabic(アラビア語)"},
 	{"file" : "kurd.json", "name" : "Sorani(ソラニー語)"},
 	{"file" : "inuktitut.json", "name" : "Inuktitut(イヌクティトゥット語)"},
-	{"file" : "modernHebrew.json", "name" : "ModernHebrew(現代ヘブライ語)"},
+	{"file" : "hebrew.json", "name" : "Hebrew(ヘブライ語)"},
 	{"file" : "russian.json", "name" : "Russian(ロシア語)"},
 	{"file" : "tamil.json", "name" : "Tamil(タミル語)"},
 	{"file" : "tuva.json", "name" : "Tuva(トゥヴァ語)"},
 	{"file" : "uyghur.json", "name" : "Uyghur(ウイグル語)"},
-	{"file" : "yoruba.json", "name" : "Yoruba(ヨルバ語)"}
+	{"file" : "yoruba.json", "name" : "Yoruba(ヨルバ語)"},
+	{"file" : "korean.json", "name" : "Korean(朝鮮語)"}
     ]
 }
