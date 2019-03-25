@@ -17,6 +17,7 @@
 	{"file" : "uyghur.json", "name" : "Uyghur(ウイグル語)"},
 	{"file" : "yoruba.json", "name" : "Yoruba(ヨルバ語)"},
 	{"file" : "korean.json", "name" : "Korean(朝鮮語)"},
-	{"file" : "tibetan.json", "name" : "Tibetan(チベット語)"}
+	{"file" : "tibetan.json", "name" : "Tibetan(チベット語)"},
+	{"file" : "khmer.json", "name" : "Khmer(クメール語)"}
     ]
 }
