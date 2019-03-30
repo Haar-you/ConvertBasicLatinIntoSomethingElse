@@ -15,30 +15,42 @@
     
   </head>
   <body>
-    <nav class="navbar navbar-dark bg-dark">
-      <button type="button" class="btn btn-light" id="btnReference">選択</button>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <ul class="navbar-nav">
+	<li class="nav-item active">
+	  <a class="nav-link dropdown-toggle" id="btnReference" href="#" data-toggle="dropdown" aria-expanded="false">選択</a>
+	  <div class="dropdown-menu p-3 shadow" aria-labelledby="btnReference" id="dropdownReference">
+	  </div>
+	</li>
+	<li class="nav-item active">
+	  <a class="nav-link dropdown-toggle" id="btnFontSizeSelector" href="#" data-toggle="dropdown" aria-expanded="false">font-size</a>
+	  <div class="dropdown-menu shadow" aria-labelledby="btnFontsizeselector">
+	    <a class="dropdown-item" href="#" onclick="{$('#output').css('font-size', 'small');}">small</a>
+	    <a class="dropdown-item" href="#" onclick="{$('#output').css('font-size', 'medium');}">medium</a>
+	    <a class="dropdown-item" href="#" onclick="{$('#output').css('font-size', 'large');}">large</a>
+	    <a class="dropdown-item" href="#" onclick="{$('#output').css('font-size', 'x-large');}">x-large</a>
+	    <a class="dropdown-item" href="#" onclick="{$('#output').css('font-size', 'xx-large');}">xx-large</a>
+	  </div>
+	</li>
+      </ul>
     </nav>
 
-    <div class="container">
-      <div class="h-25">
-	<div class="row">
-	  <div class="col-5">
-	    <textarea id="input"></textarea>
-	  </div>
-	  <div class="col-2 my-auto mx-auto">
-	    <button type="button" class="btn btn-primary" id="convert" onclick="convert()">変換<br>(Ctrl+Enter)</button>
-	  </div>
-	  <div class="col-5">
-	    <textarea id="output"></textarea>
-	  </div>
+    <div class="container" style="height: 30%;">
+      <div class="row h-100">
+	<div class="col-5">
+	  <textarea id="input"></textarea>
+	</div>
+	<div class="col-2 my-auto mx-auto">
+	  <button type="button" class="btn btn-primary" id="convert" onclick="convert()">変換<br>(Ctrl+Enter)</button>
+	</div>
+	<div class="col-5">
+	  <textarea id="output"></textarea>
 	</div>
       </div>
+    </div>
 
-      <div>
-	<div id="reference"></div>
-      </div>
-      
-      <div class="h-75 w-100 border border-primary" style="column-width: 100px;" id="tree">
+    <div class="" style="height: 60%;">
+      <div class="h-100 w-100 border border-primary p-1" style="column-count: 6; overflow: auto" id="tree">
       </div>
     </div>
   </body>

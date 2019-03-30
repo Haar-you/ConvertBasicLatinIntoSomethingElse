@@ -31,21 +31,27 @@ Tree.prototype.put = function(input, output){
 };
 
 Tree.prototype.show = function(){
+    var elems = [];
     var _show = function(node, his, depth){
-	var text = "";
-
 	node.next.forEach(function(val, key){
-	    var input = escape(his + String.fromCharCode(key));
+	    var input = his + String.fromCharCode(key);
 	    var output = escape( String.fromCharCode.apply(null, node.next[key].value));
 
 	    if(node.next[key].value != null)
-		text +=`<span class="treeInput">${input}</span>→<span class="treeOutput">${output}</span><br>`;
-	    text += _show(node.next[key], input, depth+1);
+		elems.push(
+		    $("<div></div>").append(
+			$("<span></span>", {"class": "treeInput", text: input}),
+			$("<span></span>", {text: "→"}),
+			$("<span></span>", {"class": "treeOutput", text: output}),
+		    )
+		);
+	    _show(node.next[key], input, depth+1);
 	});
-	return text;
     };
 
-    return _show(this.root, "", 0);
+    _show(this.root, "", 0);
+
+    return elems;
 };
 
 
@@ -71,12 +77,12 @@ Tree.prototype.replace = function(input){
     };
     var lines = input.split(/\r|\n|\r\n/);
     var root = this.root;
-    var output = "";
+    var output = [];
 
     $.each(lines, function(index, val){
 	var temp;
 	var str = val.split('').map(x => x.charCodeAt(0));
-	var i=0;
+	var i = 0;
 	var result = [];
 
 	
@@ -89,11 +95,10 @@ Tree.prototype.replace = function(input){
 	    
 	    if(str == null) break;
 	}
-	output += `${String.fromCharCode.apply(null, result)}\n`;
+	output.push(String.fromCharCode.apply(null, result));
     });
 
-    
-    return output;
+    return output.join("\n");
 };
 
 var tree = new Tree();
@@ -108,8 +113,11 @@ function constructTree(path){
 		val["out"].split('').map(x => x.charCodeAt(0))
 	    );
 	});
-	
-	$("#tree").html(tree.show());
+	var elems = tree.show();
+	$("#tree").html("");
+	elems.forEach(elem => {
+	    $("#tree").append(elem);
+	});
     });
 }
 
@@ -127,13 +135,11 @@ $(function(){
     console.log(params);
 });
 
-
-
 $(document).ready(function(){
     
     $.getJSON("./js/reference.json", function(dat){
 	$.each(dat["reference"], function(index, val){
-	    $("#reference").append(
+	    $("#dropdownReference").append(
 		$(`<a></a>`, {
 		    href: "#",
 		    on: {
@@ -150,35 +156,23 @@ $(document).ready(function(){
 
 
     $("#btnReference").click(function(){
-	if($("#reference").css("display") == "none"){
-	    $("#reference").css("display", "block");
-	}else{
-	    $("#reference").css("display", "none");
-	}
     });
+
+    $("#btnFontSizeSelector").click(function(){
+    });
+
 
     $("#input").keydown(function(e){
 	//Firefox
 	if(e.ctrlKey && e.keyCode == 13){ //Ctrl + Enter
 	    $("#convert").click();
+	    if(e.shiftKey){
+		$("#output").select();
+		document.execCommand('copy')
+	    }
 	}
     });
 
-
-    ////
-    $("#output").css("font-family", params["font-family"]);
-    $("#output").css("font-size", params["font-size"]);
-    $("#output").css("font-weight", params["font-weight"]);
-    $("#output").css("font-style", params["font-style"]);
-
-    
-
-
-
-
-
-
-    
 });
 
 
@@ -195,17 +189,3 @@ function escape(str){
 	}[m];
     });
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
