@@ -103,10 +103,20 @@ Tree.prototype.replace = function(input){
 
 var tree = new Tree();
 
+function split_char(str){
+    return str.split('').map(x => x.charCodeAt(0));
+}
+
 function constructTree(path){
     tree.init();
 
     $.getJSON(`./json/${path}`, function(dat){
+
+	tree.put(split_char("#"), split_char(""));
+	tree.put(split_char("##"), split_char("‌"));
+
+	
+	
 	$.each(dat["data"], function(index, val){
 	    tree.put(
 		val["in"].split('').map(x => x.charCodeAt(0)),
@@ -136,21 +146,69 @@ $(function(){
 });
 
 $(document).ready(function(){
-    
+
     $.getJSON("./js/reference.json", function(dat){
-	$.each(dat["reference"], function(index, val){
+
+	$.each(dat["script-name"], function(index, val){
 	    $("#dropdownReference").append(
-		$(`<a></a>`, {
-		    href: "#",
-		    on: {
-			click: function(){
-			    constructTree(val["file"]);
-			    $("#btnReference").click();
+		$("<div></div>", {"class": "dropright "}).append(
+		    $("<a></a>", {
+			href: "#",
+			on:{
+			    mouseover: function(){
+				$(`#divScript${val["code"]}`).dropdown("show");
+			    },
+			    mouseleave: function(){
+				setTimeout(
+				    function(){
+					const hvs = $(":hover");
+					if(!$($(hvs[hvs.length-1]).parent()[0]).is($(`#divScript${val["code"]}`))){
+					    $(`#divScript${val["code"]}`).dropdown("hide");
+					}
+				    }, 300
+				);
+			    },
+			},
+			"class": "btn dropdown-item dropdown-toggle",
+			"data-toggle": "dropdown",
+			role: "button",
+			text: val["name"],
+			id: `dropdownScript${val["code"]}`
+		    }),
+		    $("<div></div>", {
+			"class": "dropdown-menu",
+			"aria-labelledby": `dropdownScript${val["code"]}`,
+			id: `divScript${val["code"]}`,
+			on: {
+			    mouseleave: function(){
+				$(`#divScript${val["code"]}`).dropdown("hide");
+			    }
 			}
-		    },
-		    text: val["name"]
-		}).append("<br>")
+		    })
+		)
 	    );
+	});
+
+	
+	$.each(dat["reference"], function(index, val){
+	    const lang_btn = $(`<a></a>`, {
+		href: "#",
+		"class": "dropdown-item",
+		on: {
+		    click: function(){
+			constructTree(val["file"]);
+		    }
+		},
+		text: val["name"]
+	    });
+	    
+	    $(`#divScript${val["script"]}`).append(
+		lang_btn
+	    );
+
+	    if(val["symbol"] == params["lang"]){
+		lang_btn.click();
+	    }
 	});
     });
 
@@ -161,18 +219,16 @@ $(document).ready(function(){
     $("#btnFontSizeSelector").click(function(){
     });
 
-
     $("#input").keydown(function(e){
 	//Firefox
 	if(e.ctrlKey && e.keyCode == 13){ //Ctrl + Enter
 	    $("#convert").click();
-	    if(e.shiftKey){
+	    if(e.shiftKey){ //Ctrl + Shift + Enter
 		$("#output").select();
 		document.execCommand('copy')
 	    }
 	}
     });
-
 });
 
 
