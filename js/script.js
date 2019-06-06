@@ -40,7 +40,16 @@ Tree.prototype.show = function(){
 	    if(node.next[key].value != null)
 		elems.push(
 		    $("<div></div>").append(
-			$("<span></span>", {"class": "treeInput", text: input}),
+			$("<button></button>", {
+			    "class": "treeInput",
+			    text: input,
+			    on: {
+				click: function(){
+				    const text = $("#input").val();
+				    $("#input").val(text+input);
+				}
+			    }
+			}),
 			$("<span></span>", {text: "→"}),
 			$("<span></span>", {"class": "treeOutput", text: output}),
 		    )

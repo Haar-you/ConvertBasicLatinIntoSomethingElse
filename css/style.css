@@ -15,7 +15,15 @@
 
 .treeInput{
     font-family: monospace;
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px;
 }
+
+.treeInput:hover{
+    background-color: #0aa;
+}
+
 
 .treeOutput{
     font-size: xx-large;
