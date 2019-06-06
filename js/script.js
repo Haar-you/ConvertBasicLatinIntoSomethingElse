@@ -30,40 +30,6 @@ Tree.prototype.put = function(input, output){
     cur.value = output;
 };
 
-Tree.prototype.show = function(){
-    var elems = [];
-    var _show = function(node, his, depth){
-	node.next.forEach(function(val, key){
-	    var input = his + String.fromCharCode(key);
-	    var output = escape( String.fromCharCode.apply(null, node.next[key].value));
-
-	    if(node.next[key].value != null)
-		elems.push(
-		    $("<div></div>").append(
-			$("<button></button>", {
-			    "class": "treeInput",
-			    text: input,
-			    on: {
-				click: function(){
-				    const text = $("#input").val();
-				    $("#input").val(text+input);
-				}
-			    }
-			}),
-			$("<span></span>", {text: "→"}),
-			$("<span></span>", {"class": "treeOutput", text: output}),
-		    )
-		);
-	    _show(node.next[key], input, depth+1);
-	});
-    };
-
-    _show(this.root, "", 0);
-
-    return elems;
-};
-
-
 Tree.prototype.replace = function(input){
     var search = function(node, str, his, cnt){
 
@@ -120,22 +86,36 @@ function constructTree(path){
     tree.init();
 
     $.getJSON(`./json/${path}`, function(dat){
+	dat["data"].push({"in": "#", "out": "", "description": "empty"}); // empty string
+	dat["data"].push({"in": "##", "out": "‌", "description": "ZWNJ"}); // zero width non-joiner U+200C
 
-	tree.put(split_char("#"), split_char(""));
-	tree.put(split_char("##"), split_char("‌"));
 
+	dat["data"].sort((a,b) => {return a["in"] > b["in"];});
 	
+	$("#tree").html("");
 	
 	$.each(dat["data"], function(index, val){
 	    tree.put(
 		val["in"].split('').map(x => x.charCodeAt(0)),
 		val["out"].split('').map(x => x.charCodeAt(0))
 	    );
-	});
-	var elems = tree.show();
-	$("#tree").html("");
-	elems.forEach(elem => {
-	    $("#tree").append(elem);
+
+	    $("#tree").append(
+		$("<div></div>", {title: val["description"]}).append(
+		    $("<button></button>", {
+			"class": "treeInput",
+			text: val["in"],
+			on: {
+			    click: function(){
+				const text = $("#input").val();
+				$("#input").val(text+val["in"]);
+			    }
+			}
+		    }),
+		    $("<span></span>", {text: "→"}),
+		    $("<span></span>", {"class": "treeOutput", text: val["out"]}),
+		)
+	    )
 	});
     });
 }
@@ -153,6 +133,12 @@ $(function(){
     });
     console.log(params);
 });
+
+
+
+
+
+
 
 $(document).ready(function(){
 
