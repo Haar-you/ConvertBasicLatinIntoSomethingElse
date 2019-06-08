@@ -1,10 +1,10 @@
-var Node = function(value, parent){
+const Node = function(value, parent){
     this.value = value;
     this.next = new Array();
     this.parent = parent;
 };
 
-var Tree = function(){
+const Tree = function(){
     this.root = new Node(null, null);
     this.curNode = this.root;
 };
@@ -15,13 +15,13 @@ Tree.prototype.init = function(){
 };
 
 Tree.prototype.put = function(input, output){
-    var cur = this.root;
+    let cur = this.root;
 
     $.each(input, function(index, val){
 	if(val in cur.next){
 	    cur = cur.next[val];
 	}else{
-	    var temp = new Node(null, cur);
+	    const temp = new Node(null, cur);
 	    cur.next[val] = temp;
 	    cur = temp;
 	}
@@ -31,11 +31,11 @@ Tree.prototype.put = function(input, output){
 };
 
 Tree.prototype.replace = function(input){
-    var search = function(node, str, his, cnt){
+    const search = function(node, str, his, cnt){
 
 	if(str.length > 0){
-	    var head = str[0];
-	    var tail = str.slice(1);
+	    const head = str[0];
+	    const tail = str.slice(1);
 	    
 	    if(head in node.next){
 		return search(node.next[head], tail, his.concat([head]), cnt+1);
@@ -50,15 +50,16 @@ Tree.prototype.replace = function(input){
 	    return [null, (node.value != null) ? node.value : his];
 	}
     };
-    var lines = input.split(/\r|\n|\r\n/);
-    var root = this.root;
-    var output = [];
+    
+    const lines = input.split(/\r|\n|\r\n/);
+    const root = this.root;
+    let output = [];
 
     $.each(lines, function(index, val){
-	var temp;
-	var str = val.split('').map(x => x.charCodeAt(0));
-	var i = 0;
-	var result = [];
+	let temp;
+	let str = val.split('').map(x => x.charCodeAt(0));
+	let i = 0;
+	let result = [];
 
 	
 	while(true){
@@ -76,7 +77,7 @@ Tree.prototype.replace = function(input){
     return output.join("\n");
 };
 
-var tree = new Tree();
+const tree = new Tree();
 
 function split_char(str){
     return str.split('').map(x => x.charCodeAt(0));
@@ -123,15 +124,14 @@ function constructTree(path){
 var params = {};
 
 $(function(){
-    var search = window.location.search;
-    var p = search.split("&");
+    const search = window.location.search;
+    const p = search.split("&");
     $.each(p, function(i,v){
-	var m = v.match(/^\??([\w-% ]+)=([\w-% ]*)$/);
+	const m = v.match(/^\??([\w-% ]+)=([\w-% ]*)$/);
 	if(m){
 	    params[m[1]] = decodeURI(m[2]);
 	}
     });
-    console.log(params);
 });
 
 
@@ -192,6 +192,10 @@ $(document).ready(function(){
 		on: {
 		    click: function(){
 			constructTree(val["file"]);
+
+			params["lang"] = val["symbol"];
+			history.replaceState("","","?"+paramsToURL(params));
+			
 		    }
 		},
 		text: val["name"]
@@ -228,7 +232,7 @@ $(document).ready(function(){
 
 
 function convert(){
-    var textInput = $("#input").val();
+    const textInput = $("#input").val();
     $("#output").val(tree.replace(textInput));
 }
 
@@ -239,4 +243,14 @@ function escape(str){
 	    ">": "&gt;"
 	}[m];
     });
+}
+
+function paramsToURL(p){
+    let ret = "";
+
+    for(key in params){
+	ret += key + "=" + params[key] + "&";
+    }
+
+    return ret;
 }
