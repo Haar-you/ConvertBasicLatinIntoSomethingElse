@@ -23,7 +23,8 @@
 	{"file" : "sgaw_karen.json", "name" : "S'gaw karen(スゴー・カレン語)", "symbol": "ksw", "script": "Mymr"},
 	{"file" : "armenian.json", "name" : "EasternArmenian(東アルメニア語)", "symbol": "hye", "script": "Armn"},
 	{"file" : "shan.json", "name" : "Shan (シャン語)", "symbol": "shn", "script": "Mymr"},
-	{"file" : "mongolian-cyl.json", "name" : "Mongolian (モンゴル語)", "symbol": "mon", "script": "Cyrl"}
+	{"file" : "mongolian-cyl.json", "name" : "Mongolian (モンゴル語)", "symbol": "mon-cyrl", "script": "Cyrl"},
+	{"file" : "mongolian-mong.json", "name" : "Mongolian (モンゴル語)", "symbol": "mon-mong", "script": "Mong", "direction": "lr-vert"}
     ],
     "script-name": [
 	{"code": "Mymr", "name": "ビルマ文字"},
@@ -38,6 +39,7 @@
 	{"code": "Tibt", "name": "チベット文字"},
 	{"code": "Khmr", "name": "クメール文字"},
 	{"code": "Armn", "name": "アルメニア文字"},
+	{"code": "Mong", "name": "モンゴル文字"},
 	{"code": "", "name": "Others"}
     ]
 }
