@@ -22,7 +22,8 @@
 	{"file" : "mon.json", "name" : "Mon(モン語)", "symbol": "mnw", "script": "Mymr"},
 	{"file" : "sgaw_karen.json", "name" : "S'gaw karen(スゴー・カレン語)", "symbol": "ksw", "script": "Mymr"},
 	{"file" : "armenian.json", "name" : "EasternArmenian(東アルメニア語)", "symbol": "hye", "script": "Armn"},
-	{"file" : "shan.json", "name" : "Shan (シャン語)", "symbol": "shn", "script": "Mymr"}
+	{"file" : "shan.json", "name" : "Shan (シャン語)", "symbol": "shn", "script": "Mymr"},
+	{"file" : "mongolian-cyl.json", "name" : "Mongolian (モンゴル語)", "symbol": "mon", "script": "Cyrl"}
     ],
     "script-name": [
 	{"code": "Mymr", "name": "ビルマ文字"},
