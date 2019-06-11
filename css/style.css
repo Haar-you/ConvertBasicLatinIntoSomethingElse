@@ -1,12 +1,10 @@
 #input, #output{
     width: 100%;
-    height: 100%;
+    height: 40%;
     resize: none;
     padding: 0;
     margin: 0;
-}
-
-#output{
+    overflow: scroll;
 }
 
 #tree{
@@ -61,4 +59,10 @@ html{
 body{
     height: 100%;
     margin: 0;
+}
+
+.button-common-1{
+    height: 50px;
+    border-radius: 5px;
+    background-color: #ffffff;
 }

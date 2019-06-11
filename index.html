@@ -42,21 +42,21 @@
       </ul>
     </nav>
 
-    <div class="container" style="height: 30%;">
+    <div class="container" style="height: 50%;">
       <div class="row h-100">
-	<div class="col-5">
-	  <textarea id="input"></textarea>
+	<textarea id="input"></textarea>
+	<div>
+	  <button class="button-common-1" onclick="convert()">変換</button>
+	  <button class="button-common-1" onclick="changeWritingDirectionVerticalLR()">縦書き(L→R)</button>
+	  <button class="button-common-1" onclick="changeWritingDirectionVerticalRL()">縦書き(L←R)</button>
+	  <button class="button-common-1" onclick="changeWritingDirectionHorizontalLR()">横書き(L→R)</button>
+	  <button class="button-common-1" onclick="changeWritingDirectionHorizontalRL()">横書き(L←R)</button>
 	</div>
-	<div class="col-2 my-auto mx-auto">
-	  <button type="button" class="btn btn-primary" id="convert" onclick="convert()">変換<br>(Ctrl+Enter)</button>
-	</div>
-	<div class="col-5">
-	  <textarea id="output"></textarea>
-	</div>
+	<textarea id="output"></textarea>
       </div>
     </div>
-
-    <div class="" style="height: 60%;">
+    
+    <div class="" style="height: 40%;">
       <div class="h-100 w-100 border border-primary p-1" style="column-count: 6; overflow: auto" id="tree">
       </div>
     </div>

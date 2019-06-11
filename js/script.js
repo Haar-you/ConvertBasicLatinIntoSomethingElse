@@ -136,12 +136,7 @@ $(function(){
 
 
 
-
-
-
-
 $(document).ready(function(){
-
     $.getJSON("./js/reference.json", function(dat){
 
 	$.each(dat["script-name"], function(index, val){
@@ -195,7 +190,6 @@ $(document).ready(function(){
 
 			params["lang"] = val["symbol"];
 			history.replaceState("","","?"+paramsToURL(params));
-			
 		    }
 		},
 		text: val["name"]
@@ -221,7 +215,7 @@ $(document).ready(function(){
     $("#input").keydown(function(e){
 	//Firefox
 	if(e.ctrlKey && e.keyCode == 13){ //Ctrl + Enter
-	    $("#convert").click();
+	    convert();
 	    if(e.shiftKey){ //Ctrl + Shift + Enter
 		$("#output").select();
 		document.execCommand('copy')
@@ -254,3 +248,35 @@ function paramsToURL(p){
 
     return ret;
 }
+
+
+/*
+  書記方向の変更
+*/
+
+function changeWritingDirectionVerticalLR(){
+    $("#output").css({"writing-mode": "vertical-lr", "direction": "ltr"});
+}
+
+function changeWritingDirectionVerticalRL(){
+    $("#output").css({"writing-mode": "vertical-rl", "direction": "ltr"});
+}
+
+function changeWritingDirectionHorizontalLR(){
+    $("#output").css({"writing-mode": "horizontal-tb", "direction": "ltr"});
+}
+
+function changeWritingDirectionHorizontalRL(){
+    $("#output").css({"writing-mode": "horizontal-tb", "direction": "rtl"});
+}
+
+
+
+
+
+
+
+
+
+
+
