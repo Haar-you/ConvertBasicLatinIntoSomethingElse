@@ -17,19 +17,35 @@
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <ul class="navbar-nav">
+	
 	<li class="nav-item active">
-	  <a class="nav-link dropdown-toggle" id="btnReference" href="#" data-toggle="dropdown" aria-expanded="false">選択</a>
-	  <div class="dropdown-menu p-3 shadow" aria-labelledby="btnReference" id="dropdownReference">
+	  <a class="nav-link dropdown-toggle" id="btnReference" href="#" data-toggle="modal" data-target="#modalReference">選択</a>
+	  <div class="modal fade" role="dialog" aria-hidden="true" id="modalReference">
+	    <div class="modal-dialog" role="document">
+	      <div class="modal-content">
+		
+		<div class="modal-header">
+		  <h5 class="modal-title">select</h5>
+		  <button type="button" class="close" data-dismiss="modal" aria-lable="Close">
+		    <span aria-hidden="true">&times;</span>
+		  </button>
+		</div>
+
+		<div class="modal-body" id="contentLanguageSelect">
+		</div>
+		
+	      </div>
+	   </div>
 	  </div>
 	</li>
 	<li class="nav-item active">
 	  <a class="nav-link dropdown-toggle" id="btnFontSizeSelector" href="#" data-toggle="dropdown" aria-expanded="false">font-size</a>
 	  <div class="dropdown-menu shadow" aria-labelledby="btnFontsizeselector">
-	    <a class="dropdown-item" href="#" onclick="{$('#output').css('font-size', 'small');}">small</a>
-	    <a class="dropdown-item" href="#" onclick="{$('#output').css('font-size', 'medium');}">medium</a>
-	    <a class="dropdown-item" href="#" onclick="{$('#output').css('font-size', 'large');}">large</a>
-	    <a class="dropdown-item" href="#" onclick="{$('#output').css('font-size', 'x-large');}">x-large</a>
-	    <a class="dropdown-item" href="#" onclick="{$('#output').css('font-size', 'xx-large');}">xx-large</a>
+	    <a class="dropdown-item" href="#" onclick="changeFontSize('small')">small</a>
+	    <a class="dropdown-item" href="#" onclick="changeFontSize('medium')">medium</a>
+	    <a class="dropdown-item" href="#" onclick="changeFontSize('large')">large</a>
+	    <a class="dropdown-item" href="#" onclick="changeFontSize('x-large')">x-large</a>
+	    <a class="dropdown-item" href="#" onclick="changeFontSize('xx-large')">xx-large</a>
 	  </div>
 	</li>
 	<li class="nav-item active">
@@ -47,6 +63,8 @@
 	<textarea id="input"></textarea>
 	<div>
 	  <button class="button-common-1" onclick="convert()">変換</button>
+	  <button class="button-common-1" onclick="convert(); copyOutput();">変換+コピー</button>
+	  <div style="display: inline-block;width: 10px;"></div>
 	  <button class="button-common-1" onclick="changeWritingDirectionVerticalLR()">縦書き(L→R)</button>
 	  <button class="button-common-1" onclick="changeWritingDirectionVerticalRL()">縦書き(L←R)</button>
 	  <button class="button-common-1" onclick="changeWritingDirectionHorizontalLR()">横書き(L→R)</button>

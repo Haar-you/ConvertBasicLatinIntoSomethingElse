@@ -138,27 +138,11 @@ $(function(){
 
 $(document).ready(function(){
     $.getJSON("./js/reference.json", function(dat){
-
 	$.each(dat["script-name"], function(index, val){
-	    $("#dropdownReference").append(
+	    $("#contentLanguageSelect").append(
 		$("<div></div>", {"class": "dropright "}).append(
 		    $("<a></a>", {
 			href: "#",
-			on:{
-			    mouseover: function(){
-				$(`#divScript${val["code"]}`).dropdown("show");
-			    },
-			    mouseleave: function(){
-				setTimeout(
-				    function(){
-					const hvs = $(":hover");
-					if(!$($(hvs[hvs.length-1]).parent()[0]).is($(`#divScript${val["code"]}`))){
-					    $(`#divScript${val["code"]}`).dropdown("hide");
-					}
-				    }, 300
-				);
-			    },
-			},
 			"class": "btn dropdown-item dropdown-toggle",
 			"data-toggle": "dropdown",
 			role: "button",
@@ -169,16 +153,10 @@ $(document).ready(function(){
 			"class": "dropdown-menu",
 			"aria-labelledby": `dropdownScript${val["code"]}`,
 			id: `divScript${val["code"]}`,
-			on: {
-			    mouseleave: function(){
-				$(`#divScript${val["code"]}`).dropdown("hide");
-			    }
-			}
 		    })
 		)
 	    );
 	});
-
 	
 	$.each(dat["reference"], function(index, val){
 	    const lang_btn = $(`<a></a>`, {
@@ -187,9 +165,8 @@ $(document).ready(function(){
 		on: {
 		    click: function(){
 			constructTree(val["file"]);
-
-			params["lang"] = val["symbol"];
-			history.replaceState("","","?"+paramsToURL(params));
+			updateURLParameter("lang", val["symbol"]);
+			$("#modalReference").modal("hide");
 		    }
 		},
 		text: val["name"]
@@ -205,25 +182,26 @@ $(document).ready(function(){
 	});
     });
 
-
-    $("#btnReference").click(function(){
-    });
-
-    $("#btnFontSizeSelector").click(function(){
-    });
+    if(params["font-size"]) $("#output").css("font-size", params["font-size"]);
+    if(params["writing-mode"]) $("#output").css("writing-mode", params["writing-mode"]);
+    if(params["direction"]) $("#output").css("direction", params["direction"]);
+    
 
     $("#input").keydown(function(e){
 	//Firefox
 	if(e.ctrlKey && e.keyCode == 13){ //Ctrl + Enter
 	    convert();
 	    if(e.shiftKey){ //Ctrl + Shift + Enter
-		$("#output").select();
-		document.execCommand('copy')
+		copyOutput();
 	    }
 	}
     });
 });
 
+function copyOutput(){
+    $("#output").select();
+    document.execCommand('copy');
+}
 
 function convert(){
     const textInput = $("#input").val();
@@ -243,10 +221,19 @@ function paramsToURL(p){
     let ret = "";
 
     for(key in params){
-	ret += key + "=" + params[key] + "&";
+	ret += key + "=" + encodeURI(params[key]) + "&";
     }
 
     return ret;
+}
+
+/*
+  urlパラメータ関係
+*/
+
+function updateURLParameter(key, value){
+    params[key] = value;
+    history.replaceState("","","?"+paramsToURL(params));
 }
 
 
@@ -256,26 +243,37 @@ function paramsToURL(p){
 
 function changeWritingDirectionVerticalLR(){
     $("#output").css({"writing-mode": "vertical-lr", "direction": "ltr"});
+    updateURLParameter("writing-mode", "vertical-lr");
+    updateURLParameter("direction", "ltr");
 }
 
 function changeWritingDirectionVerticalRL(){
     $("#output").css({"writing-mode": "vertical-rl", "direction": "ltr"});
+    updateURLParameter("writing-mode", "vertical-rl");
+    updateURLParameter("direction", "ltr");
 }
 
 function changeWritingDirectionHorizontalLR(){
     $("#output").css({"writing-mode": "horizontal-tb", "direction": "ltr"});
+    updateURLParameter("writing-mode", "horizontal-tb");
+    updateURLParameter("direction", "ltr");
 }
 
 function changeWritingDirectionHorizontalRL(){
     $("#output").css({"writing-mode": "horizontal-tb", "direction": "rtl"});
+    updateURLParameter("writing-mode", "horizontal-tb");
+    updateURLParameter("direction", "rtl");
 }
 
 
+/*
+  フォントの変更
+*/
 
-
-
-
-
+function changeFontSize(value){
+    $("#output").css({"font-size": value});
+    updateURLParameter("font-size", value);
+}
 
 
 
