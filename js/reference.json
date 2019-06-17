@@ -25,7 +25,8 @@
 	{"file" : "shan.json", "name" : "Shan (シャン語)", "symbol": "shn", "script": "Mymr"},
 	{"file" : "mongolian-cyl.json", "name" : "Mongolian (モンゴル語)", "symbol": "mon-cyrl", "script": "Cyrl"},
 	{"file" : "mongolian-mong.json", "name" : "Mongolian (モンゴル語)", "symbol": "mon-mong", "script": "Mong", "direction": "lr-vert"},
-	{"file" : "persian.json", "name" : "Persian (ペルシャ語)", "symbol": "fas", "script": "Arab"}
+	{"file" : "persian.json", "name" : "Persian (ペルシャ語)", "symbol": "fas", "script": "Arab"},
+	{"file" : "cherokee.json", "name" : "Cherokee (チェロキー語)", "symbol": "chr", "script": "Cher"}
     ],
     "script-name": [
 	{"code": "Mymr", "name": "ビルマ文字"},
@@ -41,6 +42,7 @@
 	{"code": "Khmr", "name": "クメール文字"},
 	{"code": "Armn", "name": "アルメニア文字"},
 	{"code": "Mong", "name": "モンゴル文字"},
+	{"code": "Cher", "name": "チェロキー文字"},
 	{"code": "", "name": "Others"}
     ]
 }
