@@ -53,6 +53,7 @@
 	{"code": "Yiii", "name": "彝文字"},
 	{"code": "Beng", "name": "ベンガル文字"},
 	{"code": "Grek", "name": "ギリシャ文字"},
+	{"code": "Taml", "name": "タミル文字"},
 	{"code": "", "name": "Others"}
     ]
 }
