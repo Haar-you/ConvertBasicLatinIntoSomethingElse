@@ -31,7 +31,8 @@
 	{"file" : "ogham.json", "name" : "Ogham (オガム文字)", "symbol": "Ogam", "script": "Ogam"},
 	{"file" : "yi.json", "name" : "Yi (彝語)", "symbol": "iii", "script": "Yiii"},
 	{"file" : "bengali.json", "name" : "Bengali (ベンガル語)", "symbol": "ben", "script": "Beng"},
-	{"file" : "greek.json", "name" : "Greek (ギリシャ語)", "symbol": "grc", "script": "Grek"}
+	{"file" : "greek.json", "name" : "Greek (ギリシャ語)", "symbol": "grc", "script": "Grek"},
+	{"file" : "rovas.json", "name" : "Old Hungarian (ロヴァーシュ文字)", "symbol" : "Hung", "script" : "Hung"}
     ],
     "script-name": [
 	{"code": "Mymr", "name": "ビルマ文字"},
@@ -54,6 +55,7 @@
 	{"code": "Beng", "name": "ベンガル文字"},
 	{"code": "Grek", "name": "ギリシャ文字"},
 	{"code": "Taml", "name": "タミル文字"},
+	{"code": "Hung", "name": "ロヴァーシュ文字"},
 	{"code": "", "name": "Others"}
     ]
 }
