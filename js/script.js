@@ -86,20 +86,14 @@ function split_char(str){
 function constructTree(path){
     tree.init();
 
-    $.getJSON(`./json/${path}`, function(dat){
-	dat["data"].push({"in": "#", "out": "", "description": "empty"}); // empty string
-	dat["data"].push({"in": "##", "out": "‌", "description": "ZWNJ"}); // zero width non-joiner U+200C
+    let dict = [];
 
+    function displayHelper(){
+	dict.sort((a,b) => {return a["in"] > b["in"];});
 
-	dat["data"].sort((a,b) => {return a["in"] > b["in"];});
-	
 	$("#tree").html("");
 	
-	$.each(dat["data"], function(index, val){
-	    tree.put(
-		val["in"].split('').map(x => x.charCodeAt(0)),
-		val["out"].split('').map(x => x.charCodeAt(0))
-	    );
+	$.each(dict, function(index, val){
 
 	    $("#tree").append(
 		$("<div></div>", {title: val["description"]}).append(
@@ -118,7 +112,33 @@ function constructTree(path){
 		)
 	    )
 	});
+    }
+
+    
+    $.getJSON("./json/common.json", function(dat){
+	dat["data"].forEach(val => {
+	    if(!val.type){
+		dict.push(val);
+	    }
+	    tree.put(
+		val["in"].split('').map(x => x.charCodeAt(0)),
+		val["out"].split('').map(x => x.charCodeAt(0))
+	    );
+	});
+
+	displayHelper();
     });
+
+    $.getJSON(`./json/${path}`, function(dat){
+	dat["data"].forEach(val => {
+	    dict.push(val);
+	    tree.put(
+		val["in"].split('').map(x => x.charCodeAt(0)),
+		val["out"].split('').map(x => x.charCodeAt(0))
+	    );
+	});
+	displayHelper();
+    });    
 }
 
 var params = {};

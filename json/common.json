@@ -1,0 +1,35 @@
+{
+    "data" : [
+	{"in" : "#:", "out" : "", "description" : "empty"},
+	{"in" : "##", "out" : "‌", "description" : "zero width non-joiner (U+200C)"},
+	{"in" : "#|", "out" : "‍", "description" : "zero width joiner (U+200D)"},
+	
+	{"in" : "[[yen]]", "out" : "¥", "description" : "the currency of Japan", "type" : "currency"},
+	{"in" : "[[won]]", "out" : "₩", "description" : "the currency of South Korea, North Korea", "type" : "currency"},
+	{"in" : "[[dollar]]", "out" : "$", "description" : "the currency of USA and others", "type" : "currency"},
+	{"in" : "[[euro]]", "out" : "€", "description" : "the currency of EMU", "type" : "currency"},
+	{"in" : "[[pound]]", "out" : "£", "description" : "the currency of UK", "type" : "currency"},
+	{"in" : "[[rupee]]", "out" : "₹", "description" : "the currency of India", "type" : "currency"},
+	{"in" : "[[rupee-tamil]]", "out" : "௹", "description" : "", "type" : "currency"},
+	{"in" : "[[rupee-gujarati]]", "out" : "૱", "description" : "", "type" : "currency"},
+	{"in" : "[[riel]]", "out" : "៛", "description" : "the currency of Cambodia", "type" : "currency"},
+	{"in" : "[[dram]]", "out" : "֏", "description" : "the currency of Armenia", "type" : "currency"},
+	{"in" : "[[dong]]", "out" : "₫", "description" : "the currency of Vietnam", "type" : "currency"},
+	{"in" : "[[sheqel]]", "out" : "₪", "description" : "the currency of Israel", "type" : "currency"},
+	{"in" : "[[kip]]", "out" : "₭", "description" : "the currency of Laos", "type" : "currency"},
+	{"in" : "[[tugrik]]", "out" : "₮", "description" : "the currency of Mongolia", "type" : "currency"},
+	{"in" : "[[baht]]", "out" : "฿", "description" : "the currency of Thai", "type" : "currency"},
+	{"in" : "[[afghani]]", "out" : "؋", "description" : "the currency of Afghanistan", "type" : "currency"},
+	{"in" : "[[guarani]]", "out" : "₲", "description" : "the currency of Paraguay", "type" : "currency"},
+	{"in" : "[[hryvnia]]", "out" : "₴", "description" : "the currency of Ukraine", "type" : "currency"},
+	{"in" : "[[lari]]", "out" : "₾", "description" : "the currency of Georgia", "type" : "currency"},
+	{"in" : "[[lira]]", "out" : "₺", "description" : "the currency of Turkey", "type" : "currency"},
+	{"in" : "[[manat]]", "out" : "₼", "description" : "the currency of Azerbaijan", "type" : "currency"},
+	{"in" : "[[naira]]", "out" : "₦", "description" : "the currency of Nigeria", "type" : "currency"},
+	{"in" : "[[peso]]", "out" : "₱", "description" : "the currency of Philippines", "type" : "currency"},
+	{"in" : "[[rial]]", "out" : "﷼", "description" : "the currency of Iran", "type" : "currency"},
+	{"in" : "[[ruble]]", "out" : "₽", "description" : "the currency of Russia", "type" : "currency"},
+	{"in" : "[[taka]]", "out" : "৳", "description" : "the currency of Bangladesh", "type" : "currency"},
+	{"in" : "[[tenge]]", "out" : "₸", "description" : "the currency of Kazakhstan", "type" : "currency"}
+    ]
+}

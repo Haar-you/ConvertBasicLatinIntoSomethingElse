@@ -15,8 +15,9 @@
     
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <ul class="navbar-nav">
+    <nav class="navbar navbar-default navbar-expand-lg navbar-dark bg-dark">
+      <div class="">
+      <ul class="nav navbar-nav">
 	
 	<li class="nav-item active">
 	  <a class="nav-link dropdown-toggle" id="btnReference" href="#" data-toggle="modal" data-target="#modalReference">選択</a>
@@ -38,8 +39,8 @@
 	   </div>
 	  </div>
 	</li>
-	<li class="nav-item active">
-	  <a class="nav-link dropdown-toggle" id="btnFontSizeSelector" href="#" data-toggle="dropdown" aria-expanded="false">font-size</a>
+	<li class="dropdown active">
+	  <a class="nav-link dropdown-toggle" role="button" id="btnFontSizeSelector" href="#" data-toggle="dropdown"aria-expanded="false">font-size</a>
 	  <div class="dropdown-menu shadow" aria-labelledby="btnFontsizeselector">
 	    <a class="dropdown-item" href="#" onclick="changeFontSize('small')">small</a>
 	    <a class="dropdown-item" href="#" onclick="changeFontSize('medium')">medium</a>
@@ -48,7 +49,7 @@
 	    <a class="dropdown-item" href="#" onclick="changeFontSize('xx-large')">xx-large</a>
 	  </div>
 	</li>
-	<li class="nav-item active">
+	<li class="dropdown active">
 	  <a class="nav-link dropdown-toggle" id="btnLink" href="#" data-toggle="dropdown" aria-expanded="false">link</a>
 	  <div class="dropdown-menu shadow" aria-labelledby="btnLink">
 	    <a class="dropdown-item" href="https://github.com/Haar-you/ConvertBasicLatinIntoSomethingElse" target="_blank">github</a>
@@ -56,6 +57,7 @@
 	  </div>
 	</li>
       </ul>
+      </div>
     </nav>
 
     <div class="container" style="height: 50%;">
