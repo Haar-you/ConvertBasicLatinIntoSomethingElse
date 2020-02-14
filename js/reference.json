@@ -33,7 +33,8 @@
 	      {"file" : "bengali.json", "name" : "Bengali (ベンガル語)", "symbol": "ben", "script": "Beng"},
 	      {"file" : "greek.json", "name" : "Greek (ギリシャ語)", "symbol": "grc", "script": "Grek"},
 	      {"file" : "rovas.json", "name" : "Old Hungarian (ロヴァーシュ文字)", "symbol" : "Hung", "script" : "Hung"},
-        {"file" : "thai.json", "name": "Thai (タイ語)", "symbol" : "tha", "script" : "Thai"}
+        {"file" : "thai.json", "name": "Thai (タイ語)", "symbol" : "tha", "script" : "Thai"},
+        {"file" : "lao.json", "name": "Lao (ラーオ語)", "symbol" : "lao", "script" : "Laao"}
     ],
     "script-name": [
 	      {"code": "Mymr", "name": "ビルマ文字"},
@@ -58,6 +59,7 @@
 	      {"code": "Taml", "name": "タミル文字"},
 	      {"code": "Hung", "name": "ロヴァーシュ文字"},
         {"code": "Thai", "name": "タイ文字"},
+        {"code": "Laao", "name": "ラーオ文字"},
 	      {"code": "", "name": "Others"}
     ]
 }
